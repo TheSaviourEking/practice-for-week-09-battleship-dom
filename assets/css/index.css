@@ -28,15 +28,21 @@ h1 {
     border-radius: 0.4rem;
     width: calc(var(--cell-width-height) * 10);
     margin: 0 auto;
+    padding: 1rem;
+    background-color: deeppink;
 
     grid-template-columns: repeat(9, auto);
+    grid-template-rows: repeat(9, auto);
+    gap: 0.1rem;
 }
 
 .cell {
     border: 1px solid black;
-    margin: 0.1rem;
+    /* margin: 0.1rem; */
+    margin: auto;
     width: var(--cell-width-height);
     height: var(--cell-width-height);
+    background-color: pink;
 
     place-items: center;
 }
@@ -47,4 +53,9 @@ h1 {
 
 .hit {
     background-color: green;
+}
+
+button {
+    padding: 1rem;
+    margin: 1rem;
 }
