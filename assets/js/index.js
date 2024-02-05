@@ -23,20 +23,57 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     document.body.appendChild(gameDiv);
 
-    gameDiv.addEventListener('click', event => {
+    //     gameDiv.addEventListener('click', event => {
+    //         const row = event.target.dataset.row;
+    //         const col = event.target.dataset.col;
+    //         // if (row && col) {
+    //         //     const hit = board.makeHit(row, col);
+    //         //     if (!hit) {
+    //         //         event.target.classList.add('miss');
+    //         //     } else {
+    //         //         event.target.innerText = hit;
+    //         //         event.target.classList.add('hit');
+    //         //     }
+    //         // }
+
+    //         if (!board.isGameOver()) {
+    //             if (row && col) {
+    //                 const hit = board.makeHit(row, col);
+    //                 if (!hit) {
+    //                     event.target.classList.add('miss');
+    //                 } else {
+    //                     event.target.innerText = hit;
+    //                     event.target.classList.add('hit');
+    //                 }
+    //             }
+    //         } else {
+    //             ga
+    //         }
+    //     })
+    // })
+
+    gameDiv.addEventListener('click', gameDivClick)
+
+    function gameDivClick(e) {
         const row = event.target.dataset.row;
         const col = event.target.dataset.col;
-        console.log(row, col)
-        if (row && col) {
-            const hit = board.makeHit(row, col);
-            if (!hit) {
-                // event.target.style.background= 'red';
-                event.target.classList.add('miss');
-                console.log(event.target.classList)
-            } else {
-                event.target.innerText = hit.toString();
-                event.target.classList.add('hit');
+        if (!board.isGameOver()) {
+            if (row && col) {
+                const hit = board.makeHit(row, col);
+                if (!hit) {
+                    event.target.classList.add('miss');
+                } else {
+                    event.target.innerText = hit;
+                    event.target.classList.add('hit');
+                }
             }
+        } else {
+            const h1 = document.getElementsByTagName('h1')[0];
+            const winText = document.createElement('p');
+            winText.innerText = 'YOU WIN!';
+
+            h1.after(winText);
+            gameDiv.removeEventListener('click', gameDivClick)
         }
-    })
+    }
 })
