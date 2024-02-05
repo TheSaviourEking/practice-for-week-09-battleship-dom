@@ -1,1 +1,51 @@
 /* Your code here */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: all 0.3s;
+}
+
+:root {
+    --cell-width-height: 48px;
+}
+
+body {
+    text-align: center;
+    background-color: pink;
+}
+
+h1 {
+    padding: 2rem;
+}
+
+.game-container,
+.cell {
+    display: grid;
+}
+
+.game-container {
+    border: 1px solid black;
+    border-radius: 0.4rem;
+    width: calc(var(--cell-width-height) * 10);
+    margin: 0 auto;
+
+    grid-template-columns: repeat(9, auto);
+}
+
+.cell {
+    border: 1px solid black;
+    margin: 0.1rem;
+    width: var(--cell-width-height);
+    height: var(--cell-width-height);
+
+    place-items: center;
+}
+
+.miss {
+    background-color: red;
+}
+
+.hit {
+    background-color: green;
+}
