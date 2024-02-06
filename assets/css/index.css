@@ -9,16 +9,19 @@
 
 :root {
     --cell-width-height: 56px;
+    --board-size: 9;
 }
 
 body {
     text-align: center;
+    display: grid;
+    gap: 1rem;
 }
 
 .game-container {
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(9, auto);
+    grid-template-columns: repeat(var(--board-size), auto);
     width: fit-content;
     gap: 0.2rem;
 }
@@ -40,6 +43,14 @@ body {
 .miss {
     background-color: red;
 }
+
 .hit {
     background-color: green;
+}
+
+.disable {
+    box-shadow: none;
+}
+.disable:hover {
+    box-shadow: none;
 }
