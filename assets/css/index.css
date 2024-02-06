@@ -3,59 +3,43 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    transition: all 0.3s;
+
+    transition: all 0.3;
 }
 
 :root {
-    --cell-width-height: 48px;
+    --cell-width-height: 56px;
 }
 
 body {
     text-align: center;
 }
 
-h1 {
-    padding: 2rem;
-}
-
-.game-container,
-.cell {
-    display: grid;
-}
-
 .game-container {
-    border: 1px solid black;
-    border-radius: 0.4rem;
-    width: calc(var(--cell-width-height) * 10);
-    margin: 0 auto;
-    padding: 1rem;
-    background-color: deeppink;
-
+    margin: auto;
+    display: grid;
     grid-template-columns: repeat(9, auto);
-    grid-template-rows: repeat(9, auto);
-    gap: 0.1rem;
+    width: fit-content;
+    gap: 0.2rem;
 }
 
 .cell {
     border: 1px solid black;
-    /* margin: 0.1rem; */
-    margin: auto;
+    /* border-collapse: collapse; */
     width: var(--cell-width-height);
     height: var(--cell-width-height);
-    background-color: pink;
-
+    display: grid;
     place-items: center;
 }
 
+.cell:hover {
+    box-shadow: 1px 1px 0 red;
+}
+
+/* cell color change on click */
 .miss {
     background-color: red;
 }
-
 .hit {
     background-color: green;
-}
-
-button {
-    padding: 1rem;
-    margin: 1rem;
 }
