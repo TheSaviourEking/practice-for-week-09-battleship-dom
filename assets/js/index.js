@@ -51,15 +51,38 @@ window.addEventListener('DOMContentLoaded', () => {
     //     }
     // })
 
-    grid.addEventListener('click', handleClick)
+
+    const resetButton = document.createElement('button');
+    resetButton.innerText = 'Reset Game';
+    const h1 = document.getElementsByTagName('h1')[0];
+    h1.after(resetButton)
+    grid.addEventListener('click', handleClick);
 
     document.body.appendChild(grid);
 
+    // button click handler
+    resetButton.addEventListener('click', event => {
+        event.preventDefault();
+
+        board = new Board();
+        const cells = document.getElementsByClassName('game-container')[0].childNodes;
+        cells.forEach(cell => {
+            cell.innerText = '';
+            if (cell.classList.contains('miss')) cell.classList.remove('miss');
+            if (cell.classList.contains('hit')) cell.classList.remove('hit');
+            if (cell.classList.contains('disable')) cell.classList.remove('disable');
+        });
+        if (grid.classList.contains('disable')) grid.classList.remove('disable');
+
+        const text = document.getElementsByTagName('p')[0];
+        if (text) document.body.removeChild(text);
+
+        grid.addEventListener('click', handleClick);
+    })
     // click handler
     function handleClick(event) {
         const row = event.target.dataset.row;
         const col = event.target.dataset.col;
-
 
         if (row && col) {
             const guess = board.makeHit(row, col);
@@ -78,11 +101,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 const text = document.createElement('p');
                 text.innerText = 'YOU WIN!';
 
-                const h1 = document.getElementsByTagName('h1')[0];
-                setTimeout(() => {
-                    document.body.removeChild(text);
-                }, 3000);
-                h1.after(text);
+                resetButton.after(text);
 
                 const cells = document.getElementsByClassName('game-container')[0].childNodes;
                 cells.forEach(cell => cell.classList.add('disable'));

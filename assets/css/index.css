@@ -15,7 +15,12 @@
 body {
     text-align: center;
     display: grid;
+    place-items: center;
     gap: 1rem;
+}
+
+h1 {
+    margin-bottom: calc(var(--cell-width-height)/2);
 }
 
 .game-container {
@@ -36,7 +41,7 @@ body {
 }
 
 .cell:hover {
-    box-shadow: 1px 1px 0 red;
+    box-shadow: 1px 1px 0 black;
 }
 
 /* cell color change on click */
@@ -51,6 +56,14 @@ body {
 .disable {
     box-shadow: none;
 }
+
 .disable:hover {
     box-shadow: none;
+}
+
+/* reset button */
+button {
+    /* display: inline; */
+    width: fit-content;
+    padding: 0.5rem 1rem;
 }
