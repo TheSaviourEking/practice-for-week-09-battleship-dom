@@ -23,39 +23,12 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // use event-delegation to delegate the cell click events to the container
-    // grid.addEventListener('click', event => {
-    //     if (!board.isGameOver()) {
-    //         const row = event.target.dataset.row;
-    //         const col = event.target.dataset.col;
-
-    //         if (row && col) {
-    //             const guess = board.makeHit(row, col);
-    //             if (guess && typeof guess === 'number') {
-    //                 // get and add guess value to page
-    //                 event.target.innerText = guess;
-    //                 event.target.classList.add('hit');
-    //                 console.log(event.target.textContent)
-    //             } else {
-    //                 event.target.classList.add('miss');
-    //             }
-    //         }
-    //     } else {
-    //         const h1 = document.getElementsByTagName('h1')[0];
-    //         const p = document.createElement('p');
-    //         p.innerText = 'YOU WIN!!';
-    //         h1.after(p)
-    //         setTimeout(() => {
-    //             document.body.removeChild(p);
-    //         }, 2000)
-    //     }
-    // })
-
-
     const resetButton = document.createElement('button');
     resetButton.innerText = 'Reset Game';
     const h1 = document.getElementsByTagName('h1')[0];
     h1.after(resetButton)
+
+    // use event-delegation to delegate the cell click events to the container
     grid.addEventListener('click', handleClick);
 
     document.body.appendChild(grid);
@@ -86,13 +59,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
         if (row && col) {
             const guess = board.makeHit(row, col);
-            console.log('GameOVER?', board.isGameOver())
             if (!board.isGameOver()) {
                 if (guess && typeof guess === 'number') {
                     // get and add guess value to page
                     event.target.innerText = guess;
                     event.target.classList.add('hit');
-                    console.log(event.target.textContent)
                 } else {
                     event.target.classList.add('miss');
                 }
